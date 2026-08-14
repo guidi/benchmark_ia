@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Operacoes</p>
+    <h1>Pedidos</h1>
+  </div>
+  <form class="filters" method="get">
+    <select name="status" data-testid="orders-status-filter">
+      {% for option in ["Todos", "Pendente", "Concluido", "Cancelado"] %}
+      <option value="{{ option }}" {% if option == status %}selected{% endif %}>{{ option }}</option>
+      {% endfor %}
+    </select>
+    <input type="search" name="q" value="{{ query }}" placeholder="Buscar por cliente ou numero" data-testid="orders-search-input">
+    <button type="submit">Aplicar</button>
+  </form>
+</section>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Pedido</th>
+        <th>Cliente</th>
+        <th>Status</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr data-testid="order-row-{{ order.order_id }}">
+        <td>#{{ order.order_id }}</td>
+        <td>{{ order.customer_name }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ currency(order.total) }}</td>
+        <td>{{ order.created_at }}</td>
+        <td><a href="/orders/{{ order.order_id }}" data-testid="order-link-{{ order.order_id }}">Detalhes</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<nav class="pagination">
+  {% if page > 1 %}
+  <a href="/orders?status={{ status }}&q={{ query }}&page={{ page - 1 }}">Pagina anterior</a>
+  {% endif %}
+  <span>Pagina {{ page }} de {{ total_pages }}</span>
+  {% if page < total_pages %}
+  <a href="/orders?status={{ status }}&q={{ query }}&page={{ page + 1 }}">Proxima pagina</a>
+  {% endif %}
+</nav>
+{% endblock %}

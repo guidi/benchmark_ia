@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Modal Lab</p>
+    <h1>Aprovacao assistida</h1>
+    <p class="lead">Abra o modal, selecione a fila correta e confirme.</p>
+  </div>
+  <button type="button" class="primary-button" onclick="document.getElementById('approval-modal').showModal()" data-testid="open-approval-modal">Abrir aprovacao</button>
+</section>
+
+{% if confirmed %}
+<div class="flash success">Aprovacao confirmada para {{ selected_choice }}.</div>
+{% endif %}
+
+<section class="panel">
+  <h2>Fila esperada</h2>
+  <p>{{ target_choice }}</p>
+</section>
+
+<dialog id="approval-modal" class="modal">
+  <form method="post" action="/modal-lab/confirm" class="modal-form">
+    <div class="modal-header">
+      <h2>Selecionar fila</h2>
+      <button type="button" class="ghost-button" onclick="document.getElementById('approval-modal').close()">Fechar</button>
+    </div>
+    <label>Fila
+      <select name="choice" data-testid="approval-choice-select">
+        {% for option in options %}
+        <option value="{{ option }}">{{ option }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <div class="modal-actions">
+      <button type="submit" class="primary-button" data-testid="confirm-approval-modal">Confirmar aprovacao</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %}

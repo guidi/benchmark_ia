@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel stack">
+  <p class="eyebrow">Passo 5</p>
+  <h1>Fechamento do roteiro</h1>
+  <p>Janela atual: {{ selected if selected else "nao selecionada" }}</p>
+  <form method="post" action="/journey-lab/finish">
+    <button type="submit" class="primary-button" data-testid="journey-finish-submit">Concluir roteiro</button>
+  </form>
+</section>
+{% endblock %}

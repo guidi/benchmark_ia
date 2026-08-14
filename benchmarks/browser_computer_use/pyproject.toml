@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=84", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "benchmark-computeruse-rtx4060"
+version = "0.1.0"
+description = "Local benchmark harness for browser/computer-use models."
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "fastapi==0.141.1",
+  "jinja2==3.1.6",
+  "nvidia-ml-py==13.610.43",
+  "pandas==3.0.5",
+  "playwright==1.62.0",
+  "psutil==7.2.2",
+  "pydantic==2.13.4",
+  "python-multipart==0.0.32",
+  "PyYAML==6.0.3",
+  "requests==2.34.2",
+  "rich==15.0.0",
+  "typer==0.27.1",
+  "uvicorn==0.52.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx2==2.10.0",
+  "pytest==9.1.1",
+]
+
+[project.scripts]
+cua-bench = "benchmark_cua.cli:app"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

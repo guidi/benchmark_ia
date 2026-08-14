@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #eef3f7;
+  color: #16202a;
+}
+
+a {
+  color: #0f5a8c;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #0f2b46, #12395d);
+  color: #fff;
+  padding: 24px;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav a {
+  color: #d9e9f7;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.content {
+  padding: 28px;
+}
+
+.hero,
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #57728b;
+}
+
+h1 {
+  margin: 0 0 10px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 760px;
+  color: #41505f;
+}
+
+.pill,
+.price-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 16px 40px rgba(18, 57, 93, 0.08);
+}
+
+.card-grid,
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card,
+.panel,
+.table-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 16px 40px rgba(18, 57, 93, 0.08);
+}
+
+.card {
+  display: block;
+}
+
+.card-label {
+  display: block;
+  color: #58758d;
+  margin-bottom: 12px;
+}
+
+.card-value {
+  font-size: 2rem;
+}
+
+.notes,
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inline-form,
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input,
+select {
+  border: 1px solid #c6d6e3;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+button,
+.button-link,
+.primary-button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: #0f5a8c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.ghost-button {
+  background: #d8e4ee;
+  color: #19334d;
+}
+
+.table-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-panel th,
+.table-panel td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e5edf4;
+  text-align: left;
+}
+
+.flash {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.flash.success {
+  background: #dff6e6;
+  color: #0d5b2f;
+}
+
+.flash.error {
+  background: #fce0e0;
+  color: #8a1f1f;
+}
+
+.modal {
+  border: none;
+  border-radius: 16px;
+  width: min(480px, calc(100vw - 32px));
+  padding: 0;
+}
+
+.modal::backdrop {
+  background: rgba(15, 43, 70, 0.4);
+}
+
+.modal-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-header,
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination,
+.tab-strip {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tall-panel {
+  min-height: 1200px;
+}
+
+.spacer {
+  height: 900px;
+}
+
+.highlight-box {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fff3d6;
+  border: 1px solid #e3c170;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding-bottom: 12px;
+  }
+
+  .hero,
+  .page-header,
+  .inline-form,
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

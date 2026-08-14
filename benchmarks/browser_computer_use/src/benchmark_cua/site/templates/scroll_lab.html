@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Scroll Lab</p>
+    <h1>Checkpoint fora da viewport</h1>
+    <p class="lead">Role ate o fim para encontrar o checkpoint {{ target_name }}.</p>
+  </div>
+</section>
+
+<section class="panel tall-panel">
+  <p>Esta area foi criada para exigir scroll real antes da interacao final.</p>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <h2>{{ target_name }}</h2>
+    <p>Checkpoint final liberado apos scroll.</p>
+    <a class="primary-button" href="/scroll-lab/result?token={{ scroll_token }}" data-testid="scroll-final-link">Abrir checkpoint</a>
+  </div>
+</section>
+{% endblock %}

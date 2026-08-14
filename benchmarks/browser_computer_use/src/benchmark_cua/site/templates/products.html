@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Catalogo</p>
+    <h1>Produtos</h1>
+  </div>
+  <form class="inline-form" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Buscar produto ou categoria" data-testid="products-search">
+    <button type="submit">Buscar</button>
+  </form>
+</section>
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Categoria</th>
+        <th>Preco</th>
+        <th>Estoque</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr data-testid="product-row-{{ product.slug }}">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ currency(product.price) }}</td>
+        <td>{{ product.stock }}</td>
+        <td><a href="/products/{{ product.slug }}" data-testid="product-link-{{ product.slug }}">Abrir</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

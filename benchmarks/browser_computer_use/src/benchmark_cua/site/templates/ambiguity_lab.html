@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Ambiguidade visual</p>
+    <h1>Paineis semelhantes</h1>
+    <p class="lead">Abra exatamente o painel {{ target_label }}.</p>
+  </div>
+</section>
+
+<section class="card-grid">
+  {% for report in reports %}
+  <article class="card">
+    <span class="card-label">{{ report.label }}</span>
+    <p>Conjunto de indicadores homologado para agosto.</p>
+    <a class="button-link" href="/ambiguity-lab/{{ report.slug }}" data-testid="ambiguity-open-{{ report.slug }}">Abrir relatorio</a>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

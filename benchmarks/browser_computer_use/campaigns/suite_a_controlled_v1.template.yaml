@@ -1,0 +1,39 @@
+campaign_id: suite-a-controlled-v1
+benchmark: browser_computer_use
+suite_version: suite-a-controlled-v1
+require_clean_worktree: true
+task_ids:
+  - t1-product-navigation
+  - t2-create-customer
+  - t3-open-order
+  - t4-pending-highest
+  - t5-customer-recent-order
+repetitions_per_task: 1
+notes: >
+  Preencha os artifact_dir apos executar a campanha completa. Este
+  manifesto define a campanha canônica mínima da Suite A para
+  comparações controladas entre rotas do mesmo modelo ou entre modelos
+  diferentes.
+routes:
+  - route_id: example-quantized
+    label: Example quantized route
+    model: microsoft/Fara1.5-4B
+    model_checkpoint: microsoft/Fara1.5-4B
+    execution_class: quantized
+    runtime: openai-compatible-endpoint
+    runtime_version: transformers
+    quantization: bitsandbytes-4bit
+    offload_policy: none
+    endpoint_contract: openai-chat-completions-multimodal-computer-use
+    endpoint_base_url: http://127.0.0.1:8001
+    runs:
+      - task_id: t1-product-navigation
+        artifact_dir: artifacts/runs/t1-product-navigation/fill-me
+      - task_id: t2-create-customer
+        artifact_dir: artifacts/runs/t2-create-customer/fill-me
+      - task_id: t3-open-order
+        artifact_dir: artifacts/runs/t3-open-order/fill-me
+      - task_id: t4-pending-highest
+        artifact_dir: artifacts/runs/t4-pending-highest/fill-me
+      - task_id: t5-customer-recent-order
+        artifact_dir: artifacts/runs/t5-customer-recent-order/fill-me

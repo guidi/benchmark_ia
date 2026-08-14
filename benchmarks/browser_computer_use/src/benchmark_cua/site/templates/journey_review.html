@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel stack">
+  <p class="eyebrow">Passo 3</p>
+  <h1>Codigo de revisao</h1>
+  <form method="post" action="/journey-lab/review" class="stack">
+    <label>Codigo
+      <input type="text" name="review_code" placeholder="Digite o codigo recebido" data-testid="journey-review-code-input">
+    </label>
+    <button type="submit" class="primary-button" data-testid="journey-review-submit">Continuar</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,2 @@
+"""Controlled benchmark web application."""
+

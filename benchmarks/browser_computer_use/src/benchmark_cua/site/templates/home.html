@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">Suite A Controlada</p>
+    <h1>Painel do benchmark local</h1>
+    <p class="lead">Ambiente controlado para testar navegacao, formularios, busca, filtros e respostas em tarefas multi-step.</p>
+  </div>
+  <div class="pill">Tarefas definidas: {{ task_count }}</div>
+</section>
+
+<section class="card-grid">
+  {% for card in cards %}
+  <a class="card" href="{{ card.href }}">
+    <span class="card-label">{{ card.title }}</span>
+    <strong class="card-value">{{ card.value }}</strong>
+  </a>
+  {% endfor %}
+</section>
+
+<section class="panel">
+  <h2>Notas operacionais</h2>
+  <ul class="notes">
+    {% for note in notes %}
+    <li>{{ note }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

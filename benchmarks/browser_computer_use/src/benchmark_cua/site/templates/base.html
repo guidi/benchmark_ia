@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title if title else "Benchmark Controlado" }}</title>
+    <link rel="stylesheet" href="/static/app.css">
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">Benchmark Lab</div>
+        <nav class="nav">
+          <a href="/" data-testid="nav-home">Inicio</a>
+          <a href="/products" data-testid="nav-products">Produtos</a>
+          <a href="/customers" data-testid="nav-customers">Clientes</a>
+          <a href="/orders" data-testid="nav-orders">Pedidos</a>
+          <a href="/workspace" data-testid="nav-workspace">Workspace</a>
+        </nav>
+      </aside>
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel stack">
+  <p class="eyebrow">Passo 1</p>
+  <h1>Escolha do time</h1>
+  <form method="post" action="/journey-lab/profile" class="stack">
+    <label>Time
+      <select name="team" data-testid="journey-team-select">
+        {% for team in teams %}
+        <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button type="submit" class="primary-button" data-testid="journey-profile-submit">Continuar</button>
+  </form>
+</section>
+{% endblock %}

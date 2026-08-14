@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Passo 4</p>
+    <h1>Janela de lancamento</h1>
+  </div>
+  <button type="button" class="primary-button" onclick="document.getElementById('journey-modal').showModal()" data-testid="journey-open-modal">Selecionar janela</button>
+</section>
+
+{% if selected %}
+<div class="flash success">Janela selecionada: {{ selected }}.</div>
+{% endif %}
+
+<dialog id="journey-modal" class="modal">
+  <form method="post" action="/journey-lab/confirm" class="modal-form">
+    <div class="modal-header">
+      <h2>Selecionar janela</h2>
+      <button type="button" class="ghost-button" onclick="document.getElementById('journey-modal').close()">Fechar</button>
+    </div>
+    <label>Janela
+      <select name="launch_window" data-testid="journey-launch-window-select">
+        {% for option in launch_windows %}
+        <option value="{{ option }}">{{ option }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <div class="modal-actions">
+      <button type="submit" class="primary-button" data-testid="journey-confirm-modal">Confirmar janela</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %}

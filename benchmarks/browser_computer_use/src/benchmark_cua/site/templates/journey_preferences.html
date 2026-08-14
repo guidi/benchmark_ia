@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel stack">
+  <p class="eyebrow">Passo 2</p>
+  <h1>Preferencias</h1>
+  <form method="post" action="/journey-lab/preferences" class="stack">
+    <label><input type="checkbox" name="receive_alerts" value="yes" data-testid="journey-alerts-checkbox"> Ativar alertas operacionais</label>
+    <label><input type="radio" name="density" value="compacta" data-testid="journey-density-compacta"> Densidade compacta</label>
+    <label><input type="radio" name="density" value="confortavel" data-testid="journey-density-confortavel"> Densidade confortavel</label>
+    <button type="submit" class="primary-button" data-testid="journey-preferences-submit">Continuar</button>
+  </form>
+</section>
+{% endblock %}

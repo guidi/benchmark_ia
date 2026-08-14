@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">{{ product.category }}</p>
+    <h1>{{ product.name }}</h1>
+    <p class="lead">{{ product.summary }}</p>
+  </div>
+  <div class="price-box">
+    <span>Preco atual</span>
+    <strong>{{ currency(product.price) }}</strong>
+  </div>
+</section>
+
+<section class="detail-grid">
+  <div class="panel">
+    <h2>Especificacoes</h2>
+    <ul class="notes">
+      <li>Estoque: {{ product.stock }}</li>
+      <li>Categoria: {{ product.category }}</li>
+      <li>Entrega estimada: 2 dias uteis</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h2>Acoes</h2>
+    <div class="stack">
+      <button type="button">Adicionar ao comparador</button>
+      <button type="button">Solicitar proposta</button>
+      <a class="button-link" href="/products">Voltar ao catalogo</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

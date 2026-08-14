@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">CRM</p>
+    <h1>Clientes</h1>
+  </div>
+  <button type="button" class="primary-button" onclick="document.getElementById('customer-modal').showModal()" data-testid="open-customer-modal">Novo cliente</button>
+</section>
+
+{% if created %}
+<div class="flash success">Cliente cadastrado com sucesso.</div>
+{% endif %}
+{% if error %}
+<div class="flash error">{{ error }}</div>
+{% endif %}
+
+<section class="table-panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Cidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers %}
+      <tr>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.city }}</td>
+        <td><a href="/orders?q={{ customer.name }}" data-testid="customer-orders-{{ customer.name|replace(' ', '-')|lower }}">Pedidos</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<dialog id="customer-modal" class="modal">
+  <form method="post" action="/customers/create" class="modal-form">
+    <div class="modal-header">
+      <h2>Novo cliente</h2>
+      <button type="button" class="ghost-button" onclick="document.getElementById('customer-modal').close()">Fechar</button>
+    </div>
+    <label>Nome
+      <input type="text" name="name" placeholder="Nome completo" data-testid="customer-name-input">
+    </label>
+    <label>E-mail
+      <input type="email" name="email" placeholder="cliente@example.test" data-testid="customer-email-input">
+    </label>
+    <label>Cidade
+      <input type="text" name="city" placeholder="Cidade" data-testid="customer-city-input">
+    </label>
+    <div class="modal-actions">
+      <button type="submit" class="primary-button" data-testid="submit-customer-form">Salvar cliente</button>
+    </div>
+  </form>
+</dialog>
+{% endblock %}

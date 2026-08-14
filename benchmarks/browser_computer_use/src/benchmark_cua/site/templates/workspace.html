@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Workspace</p>
+    <h1>Configuracoes e componentes</h1>
+    <p class="lead">Pagina criada para exercitar tabs, dropdowns, checkbox, radio button, validacao e scroll.</p>
+  </div>
+</section>
+
+<section class="tab-strip">
+  <button type="button" onclick="showTab('overview')">Visao geral</button>
+  <button type="button" onclick="showTab('preferences')">Preferencias</button>
+  <button type="button" onclick="showTab('longform')">Long form</button>
+</section>
+
+<section id="tab-overview" class="tab-panel active">
+  <div class="panel">
+    <h2>Resumo</h2>
+    <p>Use esta tela para validar interacoes de navegacao e leitura de interface.</p>
+  </div>
+</section>
+
+<section id="tab-preferences" class="tab-panel">
+  <form class="panel stack">
+    <label>Perfil
+      <select>
+        <option>Operacoes</option>
+        <option>Financeiro</option>
+        <option>Suporte</option>
+      </select>
+    </label>
+    <label><input type="checkbox"> Receber alertas por e-mail</label>
+    <label><input type="radio" name="density"> Densidade compacta</label>
+    <label><input type="radio" name="density"> Densidade confortavel</label>
+    <button type="button">Salvar preferencias</button>
+  </form>
+</section>
+
+<section id="tab-longform" class="tab-panel">
+  <div class="panel tall-panel">
+    <h2>Area longa</h2>
+    <p>Role ate o fim para encontrar o bloco final desta pagina.</p>
+    <div class="spacer"></div>
+    <div class="highlight-box">Bloco final apos scroll.</div>
+  </div>
+</section>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.tab-panel').forEach((element) => element.classList.remove('active'));
+    document.getElementById(`tab-${name}`).classList.add('active');
+  }
+</script>
+{% endblock %}
